@@ -106,6 +106,7 @@ export default {
           projects: 1,
         })
         this.UPDATE_LASTACTIVITY({
+            user: this.GET_CURRENTUSER,
             name: this.name,
             date: new Date().toLocaleString('hr-BA',{year:'numeric',month:'numeric',day:'numeric'}),
             logo: this.GET_PROJECTS[x].logo

@@ -4,12 +4,12 @@
     <myheader/>
     <div class="navigation_Container">
       <div class="info_Rectangle">
-        <img class="activityIcon" :src="(this.GET_LASTACTIVITY.logo)? this.GET_LASTACTIVITY.logo : require('../assets/hand.svg')" alt="handIcon">
+        <img class="activityIcon" :src="(this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.logo)? this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.logo : require('../assets/hand.svg')" alt="handIcon">
         <div class="info_Rectangle_text">
           <h2>Last activity</h2>
-          <h4>{{(this.GET_LASTACTIVITY.name)? this.GET_LASTACTIVITY.name : 'None, you lazy bastard'}}</h4>
-          <div class="info_Rectangle_text_date" v-if="this.GET_LASTACTIVITY.name">
-            <p>03/08/2021</p>
+          <h4>{{(this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.name)? this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.name : 'None, you lazy bastard'}}</h4>
+          <div class="info_Rectangle_text_date" v-if="this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.name">
+            <p>{{this.GET_USERS[this.GET_USERS.findIndex( x => x.username === this.GET_CURRENTUSER)].lastActivity.date}}</p>
             <img src="../assets/clock.svg" alt="clockIcon">
           </div>
         </div>  
@@ -51,7 +51,7 @@ name:'Home',
       }
  },
  computed:{
-   ...mapGetters(['GET_LASTACTIVITY'])
+   ...mapGetters([,'GET_CURRENTUSER','GET_USERS'])
  },
  methods:{
     onClickChild (value) {
@@ -68,7 +68,7 @@ name:'Home',
     },
     goToCollab(){
       this.$router.push({path:'/collab'})
-    }
+    },
  },
 components:{
   myheader,

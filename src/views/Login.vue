@@ -66,7 +66,7 @@ export default {
           sat: 0,
           sun: 0,
           newTech: 0
-          }],'tech':[],'inbox':[]}); 
+          }],'tech':[],'inbox':[],lastActivity:{name: undefined,date:undefined,logo:undefined}}); 
         this.UPDATE_CURRENTUSER(this.username)
         this.UPDATE_STAYLOGGED(this.stayLogged)}
         this.$router.push('/home')

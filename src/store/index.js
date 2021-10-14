@@ -19,11 +19,6 @@ export default new Vuex.Store({
     stayloggedIn: false,
     users: [],
     projects: [],
-    lastActivity: {
-      name: undefined,
-      date: undefined,
-      logo: undefined,
-    },
 
   },
   getters: {
@@ -31,7 +26,6 @@ export default new Vuex.Store({
     GET_CURRENTUSER : (state) => { return state.currentUser},
     GET_LOGGEDIN : (state) => { return state.stayloggedIn},
     GET_PROJECTS : (state) => { return state.projects},
-    GET_LASTACTIVITY: (state) => {return state.lastActivity},
   },
   mutations: {
     LOGOUT(state,payload){
@@ -50,10 +44,10 @@ export default new Vuex.Store({
       state.stayloggedIn = payload
     },
     UPDATE_LASTACTIVITY(state,payload){
+      state.users[state.users.findIndex( x => x.username === payload.user)].lastActivity.name = payload.name
+      state.users[state.users.findIndex( x => x.username === payload.user)].lastActivity.date = payload.date
+      state.users[state.users.findIndex( x => x.username === payload.user)].lastActivity.logo = payload.logo
       //zadnja aktivnost projekta
-      state.lastActivity.name = payload.name
-      state.lastActivity.date = payload.date
-      state.lastActivity.logo = payload.logo
     },
     CREATE_PROJECT(state,payload){
       state.projects.push(payload)
